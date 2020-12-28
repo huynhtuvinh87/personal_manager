@@ -23,22 +23,22 @@
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary mb-2">Lọc</button>
-                    <a href="{{route('post.index')}}" class="btn btn-outline-primary mb-2 ml-1">Reset</a>
+                    <a href="{{route('spending_money.index')}}" class="btn btn-outline-primary mb-2 ml-1">Reset</a>
                 </form>
             </div>
             <ul class="list-group list-post">
                 <li class="list-group-item list-group-item-primary">
-                    Tổng chi: <strong class="text-danger">{{number_format($posts['sum_price'], 0, '', '.')}} VNĐ</strong>
-                    <a href="{{route("post.create")}}" class="badge-pill btn btn-primary btn-sm float-right">Thêm mới</a>
+                    Tổng chi: <strong class="text-danger">{{number_format($result['sum_price'], 0, '', '.')}} VNĐ</strong>
+                    <a href="{{route("spending_money.create")}}" class="badge-pill btn btn-primary btn-sm float-right">Thêm mới</a>
                 </li>
-                @foreach ($posts['data'] as $post)
+                @foreach ($result['data'] as $post)
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <a href="{{route("post.edit",$post->id)}}">{{$post->title}}</a>
+                        <a href="{{route("spending_money.edit",$post->id)}}">{{$post->title}}</a>
                         <span class="badge-pill"><strong class="text-danger">{{number_format($post->price, 0, '', '.')}} VNĐ</strong> <br> <small>{{date("d-m-Y", strtotime($post->date))}}</small></span>
                     </li>
                 @endforeach
                 <li class="list-group-item list-group-item-primary">
-                    Tổng chi: <strong class="text-danger">{{number_format($posts['sum_price'], 0, '', '.')}} VNĐ</strong>
+                    Tổng chi: <strong class="text-danger">{{number_format($result['sum_price'], 0, '', '.')}} VNĐ</strong>
                     <span class="badge-pill"></span>
                 </li>
             </ul>

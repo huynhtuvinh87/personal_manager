@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Post\Tasks;
+namespace App\Http\Controllers\CollectMoney\Tasks;
 
-use App\Models\Post;
+use App\Models\CollectMoney;
 use Carbon\Carbon;
 
 class ListTask
@@ -16,13 +16,13 @@ class ListTask
      */
     public function handle($request)
     {
-        $query = Post::select(
-            'posts.id',
-            'posts.title',
-            'posts.date',
-            'posts.price',
+        $query = CollectMoney::select(
+            'collect_moneys.id',
+            'collect_moneys.title',
+            'collect_moneys.date',
+            'collect_moneys.price',
         )
-            ->join('users', 'users.id', 'posts.user_id')
+            ->join('users', 'users.id', 'collect_moneys.user_id')
             ->where(function ($query) use ($request) {
                 if ($request->month && $request->year) {
                     $query->where('month', $request->month);

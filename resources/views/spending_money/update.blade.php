@@ -6,9 +6,9 @@
             <div class="card">
                 <div class="card-header">Cập nhật</div>
                     <div class="card-body">
-                        <form action="{{route("post.update",['id'=>$post->id])}}" method="POST">
+                        <form action="{{route("spending_money.update",['id'=>$model->id])}}" method="POST">
                             {{ method_field('PUT') }}
-                            @include('post._form',['post'=>$post])
+                            @include('spending_money._form',['model'=>$model])
                             <div class="form-group row">
                                 <div class="offset-4 col-sm-6">
                                     <button type="submit" class="btn btn-success">Cập nhật</button>
@@ -16,7 +16,7 @@
                                 </div>
                             </div>
                         </form>
-                        <form id="post-delete" method="POST" action="{{ route('post.delete', $post->id) }}">
+                        <form id="spending-money-delete" method="POST" action="{{ route('spending_money.delete', $model->id) }}">
                             @csrf
                             {{ method_field('DELETE') }}
 
@@ -33,7 +33,7 @@
     $(document).ready(function() {
         $('.show_confirm').click(function(e) {
             if(confirm('Are you sure you want to delete this?')) {
-                $("#post-delete").submit();
+                $("#spending-money-delete").submit();
             }
         });
     })
